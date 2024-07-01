@@ -1,17 +1,16 @@
-import { Inter } from "next/font/google";
-import "./globals.css";
-
-const inter = Inter({ subsets: ["latin"] });
-
-export const metadata = {
-  title: "Zaid Qourah",
-  description: "Zaid Qourah's Personal Portfolio",
-};
+import '../styles/globals.css';
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
-      <body className={inter.className}>{children}</body>
-    </html>
+      <html>
+      <head>
+        <title>Zaid Qourah Portfolio</title>
+        <meta name="description" content="Zaid Qourah's personal portfolio website" />
+        <link rel="icon" href="/favicon.ico" />
+      </head>
+      <body>
+      {children}
+      </body>
+      </html>
   );
 }
