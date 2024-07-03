@@ -1,5 +1,7 @@
-import Image from 'next/image';
 import styles from '../../styles/Home.module.css';
+
+import Image from 'next/image';
+
 
 export default function ProjectCard({ project }) {
     return (
