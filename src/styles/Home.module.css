@@ -1,73 +1,28 @@
-.container {
-    padding: 0 2rem;
-}
-
-.main {
-    min-height: 100vh;
-    padding: 4rem 0;
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-.footer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 1rem 0;
-}
-
-.title {
-    margin: 0;
-    font-size: 4rem;
-}
-
-.grid {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-wrap: wrap;
-}
-
-.card {
-    margin: 1rem;
-    padding: 1.5rem;
-    text-align: center;
-    color: inherit;
-    text-decoration: none;
-    border: 1px solid #eaeaea;
-    border-radius: 10px;
-    transition: color 0.15s ease, border-color 0.15s ease;
-    width: 300px;
-}
-
-.card:hover,
-.card:focus,
-.card:active {
-    color: #0070f3;
-    border-color: #0070f3;
-}
-
-.button {
-    margin-top: 1rem;
-    padding: 0.5rem 1rem;
-    background-color: #0070f3;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.button:hover {
-    background-color: #005bb5;
-}
-
+/* styles/Home.module.css */
 .navbar {
-    display: flex;
-    justify-content: space-around;
-    padding: 1rem;
-    background-color: #0070f3;
-    color: white;
+    background-color: #1a1a1a; /* Dark background */
+    padding: 1rem 2rem; /* Padding for navbar */
+}
+
+.navButton {
+    background-color: #1a1a1a; /* Match the navbar background */
+    color: #ffffff; /* White text */
+    margin-right: 1rem; /* Space between buttons */
+    border: none; /* Remove default button border */
+    padding: 0.5rem 1rem; /* Button padding */
+    cursor: pointer; /* Pointer cursor on hover */
+    font-size: 1rem; /* Font size */
+    transition: background-color 0.3s; /* Smooth background color transition */
+}
+
+.navButton:hover {
+    background-color: #d81212; /* Slightly lighter background on hover */
+}
+
+.navButton:focus {
+    outline: none; /* Remove focus outline */
+}
+
+.active {
+    border-bottom: none; /* Remove underline for active link, as buttons are used now */
 }
