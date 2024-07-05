@@ -1,0 +1,47 @@
+<!-- public/images/backgroundShapes.svg -->
+<svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+        <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:rgb(62,108,243);stop-opacity:0.1" />
+            <stop offset="100%" style="stop-color:rgb(157,89,242);stop-opacity:0.1" />
+        </linearGradient>
+        <linearGradient id="grad2" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:rgb(245,66,174);stop-opacity:0.1" />
+            <stop offset="100%" style="stop-color:rgb(253,153,75);stop-opacity:0.1" />
+        </linearGradient>
+    </defs>
+
+    <!-- Narrow Diagonal Gradient Lines, evenly spread -->
+    <rect x="0" y="0" width="0.5%" height="200%" fill="url(#grad1)" transform="rotate(-45 50 50)" class="line-animation" />
+    <rect x="4%" y="0" width="0.5%" height="200%" fill="url(#grad2)" transform="rotate(-45 50 50)" class="line-animation" />
+    <rect x="8%" y="0" width="0.5%" height="200%" fill="url(#grad1)" transform="rotate(-45 50 50)" class="line-animation" />
+    <rect x="12%" y="0" width="0.5%" height="200%" fill="url(#grad2)" transform="rotate(-45 50 50)" class="line-animation" />
+    <rect x="16%" y="0" width="0.5%" height="200%" fill="url(#grad1)" transform="rotate(-45 50 50)" class="line-animation" />
+    <rect x="20%" y="0" width="0.5%" height="200%" fill="url(#grad2)" transform="rotate(-45 50 50)" class="line-animation" />
+    <rect x="24%" y="0" width="0.5%" height="200%" fill="url(#grad1)" transform="rotate(-45 50 50)" class="line-animation" />
+    <rect x="28%" y="0" width="0.5%" height="200%" fill="url(#grad2)" transform="rotate(-45 50 50)" class="line-animation" />
+    <rect x="32%" y="0" width="0.5%" height="200%" fill="url(#grad1)" transform="rotate(-45 50 50)" class="line-animation" />
+    <rect x="36%" y="0" width="0.5%" height="200%" fill="url(#grad2)" transform="rotate(-45 50 50)" class="line-animation" />
+    <rect x="40%" y="0" width="0.5%" height="200%" fill="url(#grad1)" transform="rotate(-45 50 50)" class="line-animation" />
+    <rect x="44%" y="0" width="0.5%" height="200%" fill="url(#grad2)" transform="rotate(-45 50 50)" class="line-animation" />
+    <rect x="48%" y="0" width="0.5%" height="200%" fill="url(#grad1)" transform="rotate(-45 50 50)" class="line-animation" />
+    <rect x="52%" y="0" width="0.5%" height="200%" fill="url(#grad2)" transform="rotate(-45 50 50)" class="line-animation" />
+    <rect x="56%" y="0" width="0.5%" height="200%" fill="url(#grad1)" transform="rotate(-45 50 50)" class="line-animation" />
+    <rect x="60%" y="0" width="0.5%" height="200%" fill="url(#grad2)" transform="rotate(-45 50 50)" class="line-animation" />
+    <rect x="64%" y="0" width="0.5%" height="200%" fill="url(#grad1)" transform="rotate(-45 50 50)" class="line-animation" />
+    <rect x="68%" y="0" width="0.5%" height="200%" fill="url(#grad2)" transform="rotate(-45 50 50)" class="line-animation" />
+    <rect x="72%" y="0" width="0.5%" height="200%" fill="url(#grad1)" transform="rotate(-45 50 50)" class="line-animation" />
+    <rect x="76%" y="0" width="0.5%" height="200%" fill="url(#grad2)" transform="rotate(-45 50 50)" class="line-animation" />
+    <rect x="80%" y="0" width="0.5%" height="200%" fill="url(#grad1)" transform="rotate(-45 50 50)" class="line-animation" />
+    <rect x="84%" y="0" width="0.5%" height="200%" fill="url(#grad2)" transform="rotate(-45 50 50)" class="line-animation" />
+    <rect x="88%" y="0" width="0.5%" height="200%" fill="url(#grad1)" transform="rotate(-45 50 50)" class="line-animation" />
+    <rect x="92%" y="0" width="0.5%" height="200%" fill="url(#grad2)" transform="rotate(-45 50 50)" class="line-animation" />
+    <rect x="96%" y="0" width="0.5%" height="200%" fill="url(#grad1)" transform="rotate(-45 50 50)" class="line-animation" />
+
+    <!-- Cylindrical Transparent Shapes, evenly spread and opposite diagonal -->
+    <rect x="0" y="20%" width="20%" height="3%" rx="20" ry="20" fill="rgba(255, 255, 255, 0.1)" transform="rotate(45 50 50)" class="cylinder-animation" />
+    <rect x="15%" y="40%" width="25%" height="3%" rx="20" ry="20" fill="rgba(255, 255, 255, 0.1)" transform="rotate(45 50 50)" class="cylinder-animation" />
+    <rect x="35%" y="60%" width="30%" height="3%" rx="20" ry="20" fill="rgba(255, 255, 255, 0.1)" transform="rotate(45 50 50)" class="cylinder-animation" />
+    <rect x="55%" y="80%" width="25%" height="3%" rx="20" ry="20" fill="rgba(255, 255, 255, 0.1)" transform="rotate(45 50 50)" class="cylinder-animation" />
+    <rect x="75%" y="100%" width="20%" height="3%" rx="20" ry="20" fill="rgba(255, 255, 255, 0.1)" transform="rotate(45 50 50)" class="cylinder-animation" />
+</svg>
