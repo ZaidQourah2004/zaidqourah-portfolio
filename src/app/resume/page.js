@@ -1,5 +1,4 @@
-import Navbar from '../components/NavBar';
-import Footer from '../components/Footer';
+import Navbar from '../components/Navbar';
 import styles from '../../styles/Home.module.css';
 
 export default function Resume() {
@@ -10,7 +9,6 @@ export default function Resume() {
                 <h1>My Resume</h1>
                 {/* Add your creative resume content here */}
             </main>
-            <Footer />
         </div>
     );
 }
