@@ -1,5 +1,6 @@
-import Navbar from '../components/Navbar';
+import Navbar2 from '../components/Navbar2';
 import ProjectCard from '../components/ProjectCard';
+import { BackgroundGradientAnimation } from '../components/ui/background-gradient-animation';
 
 const projects = [
     {
@@ -51,19 +52,21 @@ const projects = [
 
 export default function Projects() {
     return (
-        <div className="min-h-screen flex flex-col bg-gradient-to-r from-gray-900 via-indigo-800 to-gray-800 text-white">
-            <Navbar />
-            <main className="flex-1 flex flex-col items-center justify-start pt-8 p-8 relative">
-                <h1 className="text-4xl font-bold p-4 mt-4">My Projects</h1>
-                <hr className="w-full border-gray-700 my-4" />
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-                    {projects.map((project, index) => (
-                        <div key={index} className="p-4">
-                            <ProjectCard project={project} />
-                        </div>
-                    ))}
-                </div>
-            </main>
-        </div>
+        <BackgroundGradientAnimation>
+            <div className="min-h-screen flex flex-col text-white">
+                <Navbar2 />
+                <main className="flex-1 flex flex-col items-center justify-start pt-8 p-8 relative">
+                    <h1 className="text-4xl font-bold p-4 mt-4">My Projects</h1>
+                    <hr className="w-full border-gray-700 my-4" />
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+                        {projects.map((project, index) => (
+                            <div key={index} className="p-4">
+                                <ProjectCard project={project} />
+                            </div>
+                        ))}
+                    </div>
+                </main>
+            </div>
+        </BackgroundGradientAnimation>
     );
 }
