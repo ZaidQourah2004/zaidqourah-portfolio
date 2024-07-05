@@ -1,7 +1,6 @@
 import Navbar from './components/Navbar';
 import Image from 'next/image';
 import { LampDemo } from './components/ui/lamp';
-import { SparklesCore } from './components/ui/sparkles';
 
 export default function Home() {
     return (
