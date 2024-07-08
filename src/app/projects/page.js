@@ -6,7 +6,7 @@ const projects = [
     {
         name: 'Soccer Prediction Model',
         image: '/images/epl.png',
-        link: '/project1-download-link',
+        link: '/soccer',
     },
     {
         name: 'Stock Market Simulator',
@@ -16,37 +16,37 @@ const projects = [
     {
         name: 'Digital Planner and Reminders',
         image: '/images/planner.webp',
-        link: '/project3-download-link',
+        link: '/planner',
     },
     {
         name: 'Solitaire',
         image: '/images/solitaire.jpeg',
-        link: '/project3-download-link',
+        link: '/solitaire',
     },
     {
         name: 'Network Analysis Software',
         image: '/images/network.jpg',
-        link: '/project2-download-link',
+        link: '/network',
     },
     {
         name: 'Journaling App',
         image: '/images/journal.jpg',
-        link: '/project1-download-link',
+        link: '/journal',
     },
     {
         name: 'Music Plagiarism Detector',
         image: '/images/music.webp',
-        link: '/project1-download-link',
+        link: '/music',
     },
     {
         name: 'Hackathon Application Analyzer',
         image: '/images/mlh.jpeg',
-        link: '/project1-download-link',
+        link: '/hackathon',
     },
     {
         name: 'Star Trek Shortest Path Finder',
         image: '/images/star-trek.png',
-        link: '/project1-download-link',
+        link: '/star-trek',
     },
 ];
 
