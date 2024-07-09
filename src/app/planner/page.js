@@ -48,7 +48,7 @@ export default function DigitalPlanner() {
                     <h2 className="text-3xl font-semibold mb-4">Key Features:</h2>
                     <ul className="list-disc list-inside mb-6 space-y-2">
                         <li><strong>Task Management:</strong> Easily add, update, and delete tasks with a simple command-line interface.</li>
-                        <li><strong>Priority Levels:</strong> Assign priority levels to tasks to keep track of what's most important.</li>
+                        <li><strong>Priority Levels:</strong> Assign priority levels to tasks to keep track of what&apos;s most important.</li>
                         <li><strong>Due Dates:</strong> Set due dates for tasks to ensure timely completion.</li>
                         <li><strong>Persistent Storage:</strong> Tasks are saved to a file, so they persist across sessions.</li>
                     </ul>
