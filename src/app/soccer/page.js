@@ -2,8 +2,11 @@
 
 import Navbar from '../components/Navbar';
 import Link from 'next/link';
+import { useState } from 'react';
 
 export default function SoccerPredictor() {
+    const [errorMessage, setErrorMessage] = useState('');
+
     const handleDownload = () => {
         const url = 'https://github.com/ZaidQourah2004/Soccer-Predictor/archive/refs/heads/main.zip';
         window.location.href = url;
@@ -28,6 +31,11 @@ export default function SoccerPredictor() {
                         Download
                     </span>
                 </button>
+                {errorMessage && (
+                    <div className="bg-red-500 text-white p-4 rounded-lg shadow-lg max-w-5xl mb-6">
+                        <p>{errorMessage}</p>
+                    </div>
+                )}
                 <div className="bg-gray-800 rounded-lg shadow-lg overflow-hidden w-full max-w-5xl p-10">
                     <p className="text-lg mb-6 italic">
                         Introducing <strong>Soccer Predictor</strong>, a comprehensive project designed to scrape match statistics for over 700 players, manipulate and present the data dynamically, and predict match outcomes using machine learning.

@@ -2,15 +2,21 @@
 
 import Navbar from '../components/Navbar';
 import Link from 'next/link';
+import { useState } from 'react';
 
 export default function KlondikeSolitaire() {
+    const [errorMessage, setErrorMessage] = useState('');
+
     const handleDownload = async () => {
         const newFolderName = 'Klondike Solitaire';
         const response = await fetch(`/api/downloadFolder?owner=ZaidQourah2004&repo=PROJECTS&path=Projects/Python/Klondike%20Solitare%20one-turn%20Project&newFolderName=${encodeURIComponent(newFolderName)}`);
+
         if (!response.ok) {
-            console.error('Failed to download file:', response.statusText);
+            const errorData = await response.json();
+            setErrorMessage(errorData.error || 'Failed to download the file.');
             return;
         }
+
         const blob = await response.blob();
         const url = window.URL.createObjectURL(blob);
         const a = document.createElement('a');
@@ -40,6 +46,11 @@ export default function KlondikeSolitaire() {
                         Download
                     </span>
                 </button>
+                {errorMessage && (
+                    <div className="bg-red-500 text-white p-4 rounded-lg shadow-lg max-w-5xl mb-6">
+                        <p>{errorMessage}</p>
+                    </div>
+                )}
                 <div className="bg-gray-800 rounded-lg shadow-lg overflow-hidden w-full max-w-5xl p-10">
                     <p className="text-lg mb-6 italic">
                         Welcome to my <strong>Klondike Solitaire</strong> project, a classic card game implemented in Python. This project demonstrates advanced features and algorithms for creating a fully functional solitaire game.

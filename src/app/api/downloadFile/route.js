@@ -10,18 +10,32 @@ export async function GET(request) {
         return NextResponse.json({ error: 'Missing fileUrl or fileName parameter' }, { status: 400 });
     }
 
-    const response = await fetch(fileUrl);
+    try {
+        const response = await fetch(fileUrl);
 
-    if (!response.ok) {
-        return NextResponse.json({ error: 'Failed to fetch file' }, { status: 500 });
+        if (!response.ok) {
+            if (response.status === 403) {
+                const errorData = await response.json();
+                throw new Error(`GitHub API error: ${errorData.message}`);
+            }
+            throw new Error('Failed to fetch file');
+        }
+
+        const fileData = await response.text();
+
+        return new NextResponse(fileData, {
+            headers: {
+                'Content-Disposition': `attachment; filename="${fileName}"`,
+                'Content-Type': 'text/plain',
+            },
+        });
+    } catch (error) {
+        console.error('Error fetching file:', error);
+        if (error.message.includes('GitHub API error')) {
+            return NextResponse.json({
+                error: 'You have exceeded the number of API calls allowed in a specific time period. Please visit my GitHub page: https://github.com/ZaidQourah2004 to view and download the project directly, or wait for a while and try again.'
+            }, { status: 429 });
+        }
+        return NextResponse.json({ error: 'Error fetching file.' }, { status: 500 });
     }
-
-    const fileData = await response.text();
-
-    return new NextResponse(fileData, {
-        headers: {
-            'Content-Disposition': `attachment; filename="${fileName}"`,
-            'Content-Type': 'text/plain',
-        },
-    });
 }

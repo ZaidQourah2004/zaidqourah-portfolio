@@ -5,6 +5,10 @@ import { NextResponse } from 'next/server';
 const fetchJson = async (url) => {
     const response = await fetch(url);
     if (!response.ok) {
+        if (response.status === 403) {
+            const errorData = await response.json();
+            throw new Error(`GitHub API error: ${errorData.message}`);
+        }
         throw new Error(`Failed to fetch ${url}: ${response.statusText}`);
     }
     return response.json();
@@ -13,6 +17,10 @@ const fetchJson = async (url) => {
 const fetchFileContent = async (url) => {
     const response = await fetch(url);
     if (!response.ok) {
+        if (response.status === 403) {
+            const errorData = await response.json();
+            throw new Error(`GitHub API error: ${errorData.message}`);
+        }
         throw new Error(`Failed to fetch ${url}: ${response.statusText}`);
     }
     return Buffer.from(await response.arrayBuffer());
@@ -58,6 +66,11 @@ export async function GET(req) {
         return response;
     } catch (error) {
         console.error('Error creating zip file:', error);
+        if (error.message.includes('GitHub API error')) {
+            return NextResponse.json({
+                error: 'You have exceeded the number of API calls allowed in a specific time period. Please visit my GitHub page: https://github.com/ZaidQourah2004 to view and download the project directly, or wait for a while and try again.'
+            }, { status: 429 });
+        }
         return NextResponse.json({ error: 'Error creating zip file.' }, { status: 500 });
     }
 }

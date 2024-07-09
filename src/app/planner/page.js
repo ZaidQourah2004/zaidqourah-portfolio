@@ -2,16 +2,22 @@
 
 import Navbar from '../components/Navbar';
 import Link from 'next/link';
+import { useState } from 'react';
 
 export default function DigitalPlanner() {
+    const [errorMessage, setErrorMessage] = useState('');
+
     const handleDownload = async () => {
         const fileUrl = 'https://raw.githubusercontent.com/ZaidQourah2004/PROJECTS/main/Projects/Python/todo.py';
         const fileName = 'todo.py';
         const response = await fetch(`/api/downloadFile?fileUrl=${encodeURIComponent(fileUrl)}&fileName=${encodeURIComponent(fileName)}`);
+
         if (!response.ok) {
-            console.error('Failed to download file:', response.statusText);
+            const errorData = await response.json();
+            setErrorMessage(errorData.error || 'Failed to download the file.');
             return;
         }
+
         const blob = await response.blob();
         const url = window.URL.createObjectURL(blob);
         const a = document.createElement('a');
@@ -41,6 +47,11 @@ export default function DigitalPlanner() {
                         Download
                     </span>
                 </button>
+                {errorMessage && (
+                    <div className="bg-red-500 text-white p-4 rounded-lg shadow-lg max-w-5xl mb-6">
+                        <p>{errorMessage}</p>
+                    </div>
+                )}
                 <div className="bg-gray-800 rounded-lg shadow-lg overflow-hidden w-full max-w-5xl p-10">
                     <p className="text-lg mb-6 italic">
                         Introducing my <strong>Digital Planner and Reminders</strong> application, a Python-based project that simplifies task management and boosts productivity.
