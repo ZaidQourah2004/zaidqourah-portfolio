@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@fortawesome/free-solid-svg-icons": "^6.5.2",
     "@octokit/rest": "^21.0.0",
     "@tsparticles/engine": "^3.5.0",
     "@tsparticles/react": "^3.0.0",
@@ -20,6 +21,7 @@
     "jszip": "^3.10.1",
     "next": "14.2.4",
     "node-fetch": "^3.3.2",
+    "nodemailer": "^6.9.14",
     "react": "^18",
     "react-dom": "^18",
     "react-icons": "^5.2.1",
