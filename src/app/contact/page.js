@@ -40,9 +40,9 @@ export default function Contact() {
     return (
         <div className="min-h-screen flex flex-col bg-gradient-to-r from-gray-900 via-indigo-800 to-gray-800 text-white">
             <Navbar />
-            <main className="flex-1 flex flex-col items-center justify-start pt-8 p-8 relative">
-                <h1 className="text-5xl font-bold p-4 mt-16">Contact Me</h1>
-                <form onSubmit={handleSubmit} className="w-full max-w-lg bg-gray-800 p-8 rounded-lg shadow-lg space-y-4">
+            <main className="flex-1 flex flex-col items-center justify-start pt-8 p-8 relative overflow-hidden">
+                <h1 className="text-5xl font-bold p-4 mt-16 animate-fade-in">Contact Me</h1>
+                <form onSubmit={handleSubmit} className="w-full max-w-lg bg-gray-800 p-8 rounded-lg shadow-lg space-y-4 animate-slide-in-up">
                     <input type="hidden" name="access_key" value="88ed3fd5-bb53-4f67-8726-738374a125a9" />
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <input
@@ -79,14 +79,14 @@ export default function Contact() {
                     </button>
                     {status && <p className="text-center mt-4">{status}</p>}
                 </form>
-                <div className="flex mt-8 space-x-4">
+                <div className="flex mt-8 space-x-4 animate-fade-in">
                     <Link href="https://www.linkedin.com/in/zaid-qourah" passHref>
                         <button className="text-gray-300 hover:text-indigo-400 px-3 py-2 transition" aria-label="LinkedIn">
                             <FaLinkedin size={24} />
                         </button>
                     </Link>
-                    <Link href="mailto:zaidqourah@proton.me" passHref>
-                        <button className="text-gray-300 hover:text-indigo-400 px-3 py-2 transition" aria-label="LinkedIn">
+                    <Link href="mailto:qourahza@msu.edu" passHref>
+                        <button className="text-gray-300 hover:text-indigo-400 px-3 py-2 transition" aria-label="Email">
                             <FaEnvelope size={24} />
                         </button>
                     </Link>

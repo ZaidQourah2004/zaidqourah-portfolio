@@ -55,12 +55,12 @@ export default function Projects() {
         <BackgroundGradientAnimation>
             <div className="min-h-screen flex flex-col text-white">
                 <Navbar2 />
-                <main className="flex-1 flex flex-col items-center justify-start pt-8 p-8 relative">
-                    <h1 className="text-4xl font-bold p-4 mt-4">My Projects</h1>
-                    <hr className="w-full border-gray-700 my-4" />
+                <main className="flex-1 flex flex-col items-center justify-start pt-8 p-8 relative overflow-hidden">
+                    <h1 className="text-4xl font-bold p-4 mt-4 animate-fade-in">My Projects</h1>
+                    <hr className="w-full border-gray-700 my-4 animate-slide-in-up" />
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
                         {projects.map((project, index) => (
-                            <div key={index} className="p-4">
+                            <div key={index} className="p-4 animate-slide-in-up">
                                 <ProjectCard project={project} />
                             </div>
                         ))}
