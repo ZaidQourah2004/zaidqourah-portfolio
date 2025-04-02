@@ -3,6 +3,7 @@
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import styles from "@/components/Header.module.scss";
 
 import { routes, style } from "@/app/resources";
@@ -48,10 +49,13 @@ export const Header = () => {
       <div className={styles.headerContainer}>
         {/* Logo */}
         <Link href="/" className={styles.logo}>
-          <img 
+          <Image 
             src={theme === "dark" ? "/images/logo-white-darkmode.png" : "/images/logo-black-lightmode.png"} 
             alt={`${person.firstName} ${person.lastName}`} 
-            className={styles.logoImage} 
+            className={styles.logoImage}
+            width={200}
+            height={50}
+            priority
           />
         </Link>
 

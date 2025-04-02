@@ -173,6 +173,21 @@ const Background = forwardRef<HTMLDivElement, BackgroundProps>(
     const adjustedX = gradient.x != null ? remap(gradient.x, 0, 100, 37.5, 62.5) : 50;
     const adjustedY = gradient.y != null ? remap(gradient.y, 0, 100, 37.5, 62.5) : 50;
 
+    // Calculate gradient background style directly
+    const gradientBackgroundStyle = gradient.display ? {
+      background: `radial-gradient(
+        ellipse ${gradient.width != null ? `${gradient.width / 4}%` : "25%"} ${gradient.height != null ? `${gradient.height / 4}%` : "25%"} at ${adjustedX}% ${adjustedY}%,
+        ${gradient.colorStart ? `var(--${gradient.colorStart})` : "var(--brand-solid-strong)"},
+        ${gradient.colorEnd ? `var(--${gradient.colorEnd})` : "var(--brand-solid-weak)"}
+      )`,
+      // Keep opacity if needed, though applying directly might simplify this
+      opacity: gradient.opacity ? gradient.opacity / 100 : 1, 
+      // Add transform if tilt is used
+      transform: gradient.tilt != null ? `rotate(${gradient.tilt}deg)` : undefined,
+      transformOrigin: gradient.tilt != null ? 'center' : undefined,
+      pointerEvents: 'none' as const, // Keep pointer-events none
+    } : {};
+
     return (
       <Flex
         ref={backgroundRef}
@@ -185,33 +200,11 @@ const Background = forwardRef<HTMLDivElement, BackgroundProps>(
         overflow="hidden"
         style={{
           ...maskStyle(),
+          ...gradientBackgroundStyle,
           ...style,
         }}
         {...rest}
       >
-        {gradient.display && (
-          <Flex
-            position="absolute"
-            className={styles.gradient}
-            opacity={gradient.opacity}
-            pointerEvents="none"
-            style={{
-              ["--gradient-position-x" as string]: `${adjustedX}%`,
-              ["--gradient-position-y" as string]: `${adjustedY}%`,
-              ["--gradient-width" as string]:
-                gradient.width != null ? `${gradient.width / 4}%` : "25%",
-              ["--gradient-height" as string]:
-                gradient.height != null ? `${gradient.height / 4}%` : "25%",
-              ["--gradient-tilt" as string]: gradient.tilt != null ? `${gradient.tilt}deg` : "0deg",
-              ["--gradient-color-start" as string]: gradient.colorStart
-                ? `var(--${gradient.colorStart})`
-                : "var(--brand-solid-strong)",
-              ["--gradient-color-end" as string]: gradient.colorEnd
-                ? `var(--${gradient.colorEnd})`
-                : "var(--brand-solid-weak)",
-            }}
-          />
-        )}
         {dots.display && (
           <Flex
             position="absolute"

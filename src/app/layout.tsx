@@ -1,6 +1,7 @@
 import "@/once-ui/styles/index.scss";
 import "@/once-ui/tokens/index.scss";
 import "@/app/globals.css";
+import "@/once-ui/components/Background.module.scss";
 
 import classNames from "classnames";
 
@@ -101,7 +102,7 @@ export default async function RootLayout({ children }: RootLayoutProps) {
               radius: effects.mask.radius,
             }}
             gradient={{
-              display: effects.gradient.display,
+              display: false,
               x: effects.gradient.x,
               y: effects.gradient.y,
               width: effects.gradient.width,

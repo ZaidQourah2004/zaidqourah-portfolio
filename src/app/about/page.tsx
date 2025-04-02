@@ -289,7 +289,7 @@ export default function About() {
           <Column fillWidth gap="xl" marginBottom="80">
             <Column gap="16">
               <Flex gap="12" padding="16" border="brand-medium" background="brand-alpha-weak" radius="m">
-                <Icon name="code" size="l" onBackground="brand-weak" />
+                <Icon name="chevronRight" size="l" onBackground="brand-weak" />
                 <Column>
                   <Text variant="body-strong-l">Software Engineering</Text>
                   <Text variant="body-default-m">Designing and creating responsive and user-friendly software solutions.</Text>
@@ -297,7 +297,7 @@ export default function About() {
               </Flex>
               
               <Flex gap="12" padding="16" border="brand-medium" background="brand-alpha-weak" radius="m">
-                <Icon name="sparkles" size="l" onBackground="brand-weak" />
+                <Icon name="checkCircle" size="l" onBackground="brand-weak" />
                 <Column>
                   <Text variant="body-strong-l">AI & Machine Learning</Text>
                   <Text variant="body-default-m">Implementing ML algorithms using Python, TensorFlow, and Scikit-Learn.</Text>
@@ -305,7 +305,7 @@ export default function About() {
               </Flex>
               
               <Flex gap="12" padding="16" border="brand-medium" background="brand-alpha-weak" radius="m">
-                <Icon name="database" size="l" onBackground="brand-weak" />
+                <Icon name="infoCircle" size="l" onBackground="brand-weak" />
                 <Column>
                   <Text variant="body-strong-l">Backend Development</Text>
                   <Text variant="body-default-m">Dynamic data manipulation and real-time database management.</Text>
@@ -313,7 +313,7 @@ export default function About() {
               </Flex>
               
               <Flex gap="12" padding="16" border="brand-medium" background="brand-alpha-weak" radius="m">
-                <Icon name="layout" size="l" onBackground="brand-weak" />
+                <Icon name="grid" size="l" onBackground="brand-weak" />
                 <Column>
                   <Text variant="body-strong-l">Frontend Development</Text>
                   <Text variant="body-default-m">Developing interactive and responsive user interfaces.</Text>
