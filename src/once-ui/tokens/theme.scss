@@ -33,7 +33,10 @@
     --type: url('/trademark/type-dark.svg');
 
     --page-background:              var(--neutral-background-weak);
+    --page-background-rgb:          17, 17, 17;
     --backdrop:                     var(--static-black-medium);
+    
+    --neutral-border-rgb:           75, 75, 75;
 
     --solid-border-color-brand:     var(--brand-alpha-strong);
     --solid-border-color-neutral:   var(--neutral-alpha-strong);
@@ -215,7 +218,10 @@
     --type: url('/trademark/type-light.svg');
 
     --page-background:              var(--neutral-background-weak);
+    --page-background-rgb:          250, 250, 250;
     --backdrop:                     var(--static-white-medium);
+    
+    --neutral-border-rgb:           230, 230, 230;
 
     --solid-border-color-brand:     var(--brand-alpha-strong);
     --solid-border-color-neutral:   var(--neutral-alpha-strong);

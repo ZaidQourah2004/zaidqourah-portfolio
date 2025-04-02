@@ -3,15 +3,16 @@ const baseURL = "demo.magic-portfolio.com";
 const routes = {
   "/": true,
   "/about": true,
-  "/work": true,
+  "/projects": true,
   "/blog": true,
   "/gallery": true,
+  "/contact": true,
 };
 
 // Enable password protection on selected routes
 // Set password in the .env file, refer to .env.example
 const protectedRoutes = {
-  "/work/automate-design-handovers-with-a-figma-to-code-pipeline": true,
+  "/projects/automate-design-handovers-with-a-figma-to-code-pipeline": true,
 };
 
 const style = {
@@ -63,8 +64,8 @@ const effects = {
 };
 
 const display = {
-  location: true,
-  time: true,
+  location: false,
+  time: false,
 };
 
 const mailchimp = {

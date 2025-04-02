@@ -1,8 +1,7 @@
 import { Column, Flex, Heading } from "@/once-ui/components";
-import { Mailchimp } from "@/components";
 import { Posts } from "@/components/blog/Posts";
 import { baseURL } from "@/app/resources";
-import { blog, person, newsletter } from "@/app/resources/content";
+import { blog, person } from "@/app/resources/content";
 
 export async function generateMetadata() {
   const title = blog.title;
@@ -61,11 +60,12 @@ export default function Blog() {
       <Heading marginBottom="l" variant="display-strong-s">
         {blog.title}
       </Heading>
-      <Column fillWidth flex={1}>
-        <Posts range={[1, 3]} thumbnail />
-        <Posts range={[4]} columns="2" />
+      <Column fillWidth flex={1} gap="l" vertical="center" paddingY="xl">
+        <Heading variant="heading-strong-xl" style={{ textAlign: 'center' }}>Coming Soon</Heading>
+        <Flex horizontal="center" paddingX="l" style={{ textAlign: 'center' }}>
+          Blog posts are currently being prepared and will be available soon. Check back later for updates!
+        </Flex>
       </Column>
-      {newsletter.display && <Mailchimp newsletter={newsletter} />}
     </Column>
   );
 }

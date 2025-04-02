@@ -1,26 +1,17 @@
 import { InlineCode } from "@/once-ui/components";
 
 const person = {
-  firstName: "Selene",
-  lastName: "Yu",
+  firstName: "Zaid",
+  lastName: "Qourah",
   get name() {
     return `${this.firstName} ${this.lastName}`;
   },
-  role: "Design Engineer",
-  avatar: "/images/avatar.jpg",
-  location: "Asia/Jakarta", // Expecting the IANA time zone identifier, e.g., 'Europe/Vienna'
-  languages: ["English", "Bahasa"], // optional: Leave the array empty if you don't want to display languages
-};
-
-const newsletter = {
-  display: true,
-  title: <>Subscribe to {person.firstName}'s Newsletter</>,
-  description: (
-    <>
-      I occasionally write about design, technology, and share thoughts on the intersection of
-      creativity and engineering.
-    </>
-  ),
+  role: "Computer Science Engineering Student",
+  avatar: "/images/ZQ1.png",
+  location: "",
+  citizenship: "US Citizen",
+  citizenshipIcon: "🇺🇸",
+  languages: ["English", "Arabic"],
 };
 
 const social = [
@@ -29,22 +20,17 @@ const social = [
   {
     name: "GitHub",
     icon: "github",
-    link: "https://github.com/once-ui-system/nextjs-starter",
+    link: "https://github.com/ZaidQourah2004",
   },
   {
     name: "LinkedIn",
     icon: "linkedin",
-    link: "https://www.linkedin.com/company/once-ui/",
-  },
-  {
-    name: "X",
-    icon: "x",
-    link: "",
+    link: "https://www.linkedin.com/in/zaid-qourah/",
   },
   {
     name: "Email",
     icon: "email",
-    link: "mailto:example@gmail.com",
+    link: "mailto:qourahzaid04@gmail.com",
   },
 ];
 
@@ -52,11 +38,11 @@ const home = {
   label: "Home",
   title: `${person.name}'s Portfolio`,
   description: `Portfolio website showcasing my work as a ${person.role}`,
-  headline: <>Design engineer and builder</>,
+  headline: <>Computer Science Engineer & AI Enthusiast</>,
   subline: (
     <>
-      I'm Selene, a design engineer at <InlineCode>FLY</InlineCode>, where I craft intuitive
-      <br /> user experiences. After hours, I build my own projects.
+      I'm Zaid, a Computer Science Engineering student at <InlineCode>Michigan State University</InlineCode>, with a passion 
+      <br /> for AI, Machine Learning, and software development.
     </>
   ),
 };
@@ -73,60 +59,79 @@ const about = {
     display: true,
   },
   calendar: {
-    display: true,
-    link: "https://cal.com",
+    display: false,
   },
   intro: {
     display: true,
     title: "Introduction",
     description: (
       <>
-        Selene is a Jakarta-based design engineer with a passion for transforming complex challenges
-        into simple, elegant design solutions. Her work spans digital interfaces, interactive
-        experiences, and the convergence of design and technology.
+        I'm a dynamic and forward-thinking Computer Science Engineering student with a minor in Economics at 
+        Michigan State University. I'm passionate about technology and innovation, particularly in the realms of 
+        AI and Machine Learning. My goal is to leverage technology to create meaningful solutions that benefit society.
       </>
     ),
   },
-  work: {
-    display: true, // set to false to hide this section
-    title: "Work Experience",
+  projects: {
+    display: true,
+    title: "Experience",
     experiences: [
       {
-        company: "FLY",
-        timeframe: "2022 - Present",
-        role: "Senior Design Engineer",
+        company: "Quality Logistics Ltd Co.",
+        timeframe: "May 2024 - Aug 2024",
+        role: "Software Engineering Intern",
         achievements: [
           <>
-            Redesigned the UI/UX for the FLY platform, resulting in a 20% increase in user
-            engagement and 30% faster load times.
+            Led full-stack development of company website utilizing ReactJS, Node.js, and MongoDB
           </>,
           <>
-            Spearheaded the integration of AI tools into design workflows, enabling designers to
-            iterate 50% faster.
+            Configured HTTPS, managed DNS, and implemented security protocols to improve data security
+          </>,
+          <>
+            Optimized website performance through lazy loading and code splitting resulting in 50% reduced load times
+          </>,
+          <>
+            Applied SEO best practices to improve search engine rankings resulting in 300% increase in monthly visitors
           </>,
         ],
-        images: [
-          // optional: leave the array empty if you don't want to display images
-          {
-            src: "/images/projects/project-01/cover-01.jpg",
-            alt: "Once UI Project",
-            width: 16,
-            height: 9,
-          },
-        ],
+        images: [],
       },
       {
-        company: "Creativ3",
-        timeframe: "2018 - 2022",
-        role: "Lead Designer",
+        company: "MSU AI Club",
+        timeframe: "Sep 2023 - Apr 2024",
+        role: "Project Team Lead",
         achievements: [
           <>
-            Developed a design system that unified the brand across multiple platforms, improving
-            design consistency by 40%.
+            Led a group of 10 members in building an AI-powered nutrition recommendation web-app
           </>,
           <>
-            Led a cross-functional team to launch a new product line, contributing to a 15% increase
-            in overall company revenue.
+            Designated member roles, tracked progress, and measured team success
+          </>,
+          <>
+            Programmed LLM using datasets from Kaggle and implemented GPT API to create an AI assistant capable of answering nutrition-related questions
+          </>,
+          <>
+            Deployed project hosting over 1000 concurrent users with a 95% positive feedback rate and 80% retention rate
+          </>,
+        ],
+        images: [],
+      },
+      {
+        company: "Software Engineering & Computing Society",
+        timeframe: "Dec 2023 - Present",
+        role: "Co-Founder",
+        achievements: [
+          <>
+            Mentoring over 200 students on how to navigate the field of Software Engineering
+          </>,
+          <>
+            Hosting networking events, workshops, and coding competitions to promote best coding practices
+          </>,
+          <>
+            Creating a scalable cloud service for campus projects and clubs
+          </>,
+          <>
+            Collaborating with non-profits by refining their frontend designs, backend systems, and database management
           </>,
         ],
         images: [],
@@ -134,54 +139,40 @@ const about = {
     ],
   },
   studies: {
-    display: true, // set to false to hide this section
-    title: "Studies",
+    display: true,
+    title: "Education",
     institutions: [
       {
-        name: "University of Jakarta",
-        description: <>Studied software engineering.</>,
-      },
-      {
-        name: "Build the Future",
-        description: <>Studied online marketing and personal branding.</>,
+        name: "Michigan State University",
+        description: <>Bachelor of Science, Computer Science Engineering, Minor in Economics | GPA: 3.98 | Expected Graduation: Fall 2025</>,
       },
     ],
   },
   technical: {
-    display: true, // set to false to hide this section
+    display: true,
     title: "Technical skills",
     skills: [
       {
-        title: "Figma",
-        description: <>Able to prototype in Figma with Once UI with unnatural speed.</>,
-        // optional: leave the array empty if you don't want to display images
-        images: [
-          {
-            src: "/images/projects/project-01/cover-02.jpg",
-            alt: "Project image",
-            width: 16,
-            height: 9,
-          },
-          {
-            src: "/images/projects/project-01/cover-03.jpg",
-            alt: "Project image",
-            width: 16,
-            height: 9,
-          },
-        ],
+        title: "Languages",
+        description: <>Python, C++, Java, Assembly, JavaScript, TypeScript, SQL, NoSQL, Git, HTML, CSS, Go</>,
+        images: [],
       },
       {
-        title: "Next.js",
-        description: <>Building next gen apps with Next.js + Once UI + Supabase.</>,
-        // optional: leave the array empty if you don't want to display images
-        images: [
-          {
-            src: "/images/projects/project-01/cover-04.jpg",
-            alt: "Project image",
-            width: 16,
-            height: 9,
-          },
-        ],
+        title: "Frameworks & Libraries",
+        description: <>Django, Flask, Next.js, .NET, Tailwind, Spring Boot, React, Pandas, Tkinter, PyQt5, NumPy, Scikit-Learn, Svelte, gRPC</>,
+        images: [],
+      },
+      {
+        title: "Professional Focus",
+        description: (
+          <>
+            <strong>Software Engineering:</strong> Designing and creating responsive and user-friendly software solutions.<br />
+            <strong>AI & Machine Learning:</strong> Implementing ML algorithms using Python, TensorFlow, and Scikit-Learn.<br />
+            <strong>Backend Development:</strong> Dynamic data manipulation and real-time database management.<br />
+            <strong>Frontend Development:</strong> Developing interactive and responsive user interfaces.
+          </>
+        ),
+        images: [],
       },
     ],
   },
@@ -189,97 +180,65 @@ const about = {
 
 const blog = {
   label: "Blog",
-  title: "Writing about design and tech...",
-  description: `Read what ${person.name} has been up to recently`,
+  title: "Projects & Achievements",
+  description: `Read about ${person.name}'s recent projects and accomplishments`,
   // Create new blog posts by adding a new .mdx file to app/blog/posts
   // All posts will be listed on the /blog route
 };
 
-const work = {
-  label: "Work",
-  title: "My projects",
-  description: `Design and dev projects by ${person.name}`,
+const projects = {
+  label: "Projects",
+  title: "Projects",
   // Create new project pages by adding a new .mdx file to app/blog/posts
-  // All projects will be listed on the /home and /work routes
+  // All projects will be listed on the /home and /projects routes
 };
 
 const gallery = {
   label: "Gallery",
-  title: "My photo gallery",
-  description: `A photo collection by ${person.name}`,
-  // Images from https://pexels.com
+  title: "Project Showcase",
+  description: `Visual showcase of ${person.name}'s projects`,
+  // Images placeholder - replace with actual project images
   images: [
     {
       src: "/images/gallery/img-01.jpg",
-      alt: "image",
+      alt: "Project 1",
       orientation: "vertical",
     },
     {
       src: "/images/gallery/img-02.jpg",
-      alt: "image",
+      alt: "Project 2",
       orientation: "horizontal",
     },
     {
       src: "/images/gallery/img-03.jpg",
-      alt: "image",
+      alt: "Project 3",
       orientation: "vertical",
     },
+    // Keep more placeholder images for now
     {
       src: "/images/gallery/img-04.jpg",
-      alt: "image",
+      alt: "Project 4",
       orientation: "horizontal",
     },
     {
       src: "/images/gallery/img-05.jpg",
-      alt: "image",
+      alt: "Project 5",
       orientation: "horizontal",
     },
     {
       src: "/images/gallery/img-06.jpg",
-      alt: "image",
+      alt: "Project 6",
       orientation: "vertical",
-    },
-    {
-      src: "/images/gallery/img-07.jpg",
-      alt: "image",
-      orientation: "horizontal",
-    },
-    {
-      src: "/images/gallery/img-08.jpg",
-      alt: "image",
-      orientation: "vertical",
-    },
-    {
-      src: "/images/gallery/img-09.jpg",
-      alt: "image",
-      orientation: "horizontal",
-    },
-    {
-      src: "/images/gallery/img-10.jpg",
-      alt: "image",
-      orientation: "horizontal",
-    },
-    {
-      src: "/images/gallery/img-11.jpg",
-      alt: "image",
-      orientation: "vertical",
-    },
-    {
-      src: "/images/gallery/img-12.jpg",
-      alt: "image",
-      orientation: "horizontal",
-    },
-    {
-      src: "/images/gallery/img-13.jpg",
-      alt: "image",
-      orientation: "horizontal",
-    },
-    {
-      src: "/images/gallery/img-14.jpg",
-      alt: "image",
-      orientation: "horizontal",
     },
   ],
 };
 
-export { person, social, newsletter, home, about, blog, work, gallery };
+const contact = {
+  label: "Contact",
+  title: "Get in Touch",
+  description: `Contact me for collaborations and inquiries`,
+  formKey: "88ed3fd5-bb53-4f67-8726-738374a125a9",
+  email: "zaidqourah@gmail.com",
+};
+
+export { person, social, home, about, blog, projects, gallery, contact };

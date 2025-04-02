@@ -14,10 +14,7 @@ interface BlogParams {
 }
 
 export async function generateStaticParams(): Promise<{ slug: string }[]> {
-  const posts = getPosts(["src", "app", "blog", "posts"]);
-  return posts.map((post) => ({
-    slug: post.slug,
-  }));
+  return [];
 }
 
 export function generateMetadata({ params: { slug } }: BlogParams) {

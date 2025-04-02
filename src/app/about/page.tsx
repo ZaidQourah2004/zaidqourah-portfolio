@@ -14,6 +14,55 @@ import { baseURL } from "@/app/resources";
 import TableOfContents from "@/components/about/TableOfContents";
 import styles from "@/components/about/about.module.scss";
 import { person, about, social } from "@/app/resources/content";
+import React from "react";
+import Image from "next/image";
+import "@/styles/infinite-cards.css";
+import { InfiniteMovingCards } from "@/components/ui/infinite-moving-cards";
+
+const skills = [
+  { name: "Python", image: "https://cdn.simpleicons.org/python" },
+  { name: "Java", image: "/images/java.svg" },
+  { name: "JavaScript", image: "https://cdn.simpleicons.org/javascript" },
+  { name: "TypeScript", image: "https://cdn.simpleicons.org/typescript" },
+  { name: "MySQL", image: "https://cdn.simpleicons.org/mysql" },
+  { name: "C++", image: "https://cdn.simpleicons.org/cplusplus" },
+  { name: "Go", image: "https://cdn.simpleicons.org/go" },
+  { name: "Git", image: "https://cdn.simpleicons.org/git" },
+  { name: "MongoDB", image: "https://cdn.simpleicons.org/mongodb" },
+  { name: "PostgreSQL", image: "https://cdn.simpleicons.org/postgresql" },
+  { name: "Docker", image: "https://cdn.simpleicons.org/docker" },
+  { name: "Assembly", image: "/images/assembly.svg" },
+
+];
+
+const frameworks = [
+  { name: "React", image: "https://cdn.simpleicons.org/react" },
+  { name: "Next.js", image: "https://cdn.simpleicons.org/nextdotjs" },
+  { name: "Spring", image: "https://cdn.simpleicons.org/spring" },
+  { name: "Django", image: "https://cdn.simpleicons.org/django" },
+  { name: "Flask", image: "https://cdn.simpleicons.org/flask" },
+  { name: "FastAPI", image: "https://cdn.simpleicons.org/fastapi" },
+  { name: "Tailwind CSS", image: "https://cdn.simpleicons.org/tailwindcss" },
+  { name: "Node.js", image: "https://cdn.simpleicons.org/nodedotjs" },
+  { name: "Svelte", image: "https://cdn.simpleicons.org/svelte" },
+  { name: "Ray", image: "https://cdn.simpleicons.org/ray" },
+  { name: "Ollama", image: "https://cdn.simpleicons.org/ollama" },
+  { name: "Firebase", image: "https://cdn.simpleicons.org/firebase" },
+  { name: "ScyllaDB", image: "https://cdn.simpleicons.org/scylladb" },
+  { name: "Pandas", image: "https://cdn.simpleicons.org/pandas" },
+  { name: "Numpy", image: "https://cdn.simpleicons.org/numpy" },
+  { name: "Sympy", image: "https://cdn.simpleicons.org/sympy" },
+  { name: "Scikit-Learn", image: "https://cdn.simpleicons.org/scikitlearn" },
+];
+
+
+// Map of company names to their logo files
+const companyLogos = {
+  "Quality Logistics Ltd Co.": "/images/ql2.png",
+  "MSU AI Club": "/images/aiclub.svg",
+  "Software Engineering & Computing Society": "/images/secs.png",
+  "Michigan State University": "/images/msu.svg",
+};
 
 export async function generateMetadata() {
   const title = about.title;
@@ -52,9 +101,9 @@ export default function About() {
       items: [],
     },
     {
-      title: about.work.title,
-      display: about.work.display,
-      items: about.work.experiences.map((experience) => experience.company),
+      title: about.projects.title,
+      display: about.projects.display,
+      items: about.projects.experiences.map((experience) => experience.company),
     },
     {
       title: about.studies.title,
@@ -86,7 +135,7 @@ export default function About() {
               .map((item) => item.link),
             worksFor: {
               "@type": "Organization",
-              name: about.work.experiences[0].company || "",
+              name: about.projects.experiences[0].company || "",
             },
           }),
         }}
@@ -103,22 +152,43 @@ export default function About() {
           <TableOfContents structure={structure} about={about} />
         </Column>
       )}
-      <Flex fillWidth mobileDirection="column" horizontal="center">
+      <Flex fillWidth mobileDirection="column" horizontal="center" style={{ marginTop: '5rem' }}>
         {about.avatar.display && (
           <Column
             className={styles.avatar}
             minWidth="160"
             paddingX="l"
-            paddingBottom="xl"
+            paddingBottom="m"
+            paddingTop="m"
             gap="m"
             flex={3}
             horizontal="center"
+            style={{ marginTop: '-1.5rem' }}
           >
             <Avatar src={person.avatar} size="xl" />
-            <Flex gap="8" vertical="center">
-              <Icon onBackground="accent-weak" name="globe" />
-              {person.location}
-            </Flex>
+            {person.location && (
+              <Flex gap="8" vertical="center">
+                <Icon onBackground="accent-weak" name="globe" />
+                {person.location}
+              </Flex>
+            )}
+            {person.citizenship && (
+              <Flex 
+                gap="8" 
+                vertical="center" 
+                border="brand-medium" 
+                background="brand-alpha-weak" 
+                padding="8" 
+                radius="m"
+              >
+                <Text as="span" variant="label-strong-m" style={{ fontSize: "1.2rem" }}>
+                  {person.citizenshipIcon}
+                </Text>
+                <Text variant="body-default-s">
+                  {person.citizenship}
+                </Text>
+              </Flex>
+            )}
             {person.languages.length > 0 && (
               <Flex wrap gap="8">
                 {person.languages.map((language, index) => (
@@ -136,7 +206,7 @@ export default function About() {
             fillWidth
             minHeight="160"
             vertical="center"
-            marginBottom="32"
+            marginBottom="xl"
           >
             {about.calendar.display && (
               <Flex
@@ -176,12 +246,11 @@ export default function About() {
             {social.length > 0 && (
               <Flex className={styles.blockAlign} paddingTop="20" paddingBottom="8" gap="8" wrap horizontal="center" fitWidth>
                 {social.map(
-                  (item) =>
+                  (item, index) =>
                     item.link && (
-                        <>
+                        <React.Fragment key={`social-${item.name}-${index}`}>
                             <Button
                                 className="s-flex-hide"
-                                key={item.name}
                                 href={item.link}
                                 prefixIcon={item.icon}
                                 label={item.name}
@@ -191,12 +260,11 @@ export default function About() {
                             <IconButton
                                 className="s-flex-show"
                                 size="l"
-                                key={`${item.name}-icon`}
                                 href={item.link}
                                 icon={item.icon}
                                 variant="secondary"
                             />
-                        </>
+                        </React.Fragment>
                     ),
                 )}
               </Flex>
@@ -204,31 +272,101 @@ export default function About() {
           </Column>
 
           {about.intro.display && (
-            <Column textVariant="body-default-l" fillWidth gap="m" marginBottom="xl">
-              {about.intro.description}
-            </Column>
+            <>
+              <Heading as="h2" id={about.intro.title} variant="display-strong-s" marginBottom="l">
+                {about.intro.title}
+              </Heading>
+              <Column textVariant="body-default-l" fillWidth gap="m" marginBottom="xl" style={{ marginTop: "-20px" }}>
+                {about.intro.description}
+              </Column>
+            </>
           )}
 
-          {about.work.display && (
+          {/* Professional Focus Section - Moved up to appear after intro */}
+          <Heading as="h2" id="professional-focus" variant="display-strong-s" marginBottom="l">
+            Professional Focus
+          </Heading>
+          <Column fillWidth gap="xl" marginBottom="80">
+            <Column gap="16">
+              <Flex gap="12" padding="16" border="brand-medium" background="brand-alpha-weak" radius="m">
+                <Icon name="code" size="l" onBackground="brand-weak" />
+                <Column>
+                  <Text variant="body-strong-l">Software Engineering</Text>
+                  <Text variant="body-default-m">Designing and creating responsive and user-friendly software solutions.</Text>
+                </Column>
+              </Flex>
+              
+              <Flex gap="12" padding="16" border="brand-medium" background="brand-alpha-weak" radius="m">
+                <Icon name="sparkles" size="l" onBackground="brand-weak" />
+                <Column>
+                  <Text variant="body-strong-l">AI & Machine Learning</Text>
+                  <Text variant="body-default-m">Implementing ML algorithms using Python, TensorFlow, and Scikit-Learn.</Text>
+                </Column>
+              </Flex>
+              
+              <Flex gap="12" padding="16" border="brand-medium" background="brand-alpha-weak" radius="m">
+                <Icon name="database" size="l" onBackground="brand-weak" />
+                <Column>
+                  <Text variant="body-strong-l">Backend Development</Text>
+                  <Text variant="body-default-m">Dynamic data manipulation and real-time database management.</Text>
+                </Column>
+              </Flex>
+              
+              <Flex gap="12" padding="16" border="brand-medium" background="brand-alpha-weak" radius="m">
+                <Icon name="layout" size="l" onBackground="brand-weak" />
+                <Column>
+                  <Text variant="body-strong-l">Frontend Development</Text>
+                  <Text variant="body-default-m">Developing interactive and responsive user interfaces.</Text>
+                </Column>
+              </Flex>
+            </Column>
+          </Column>
+
+          {about.projects.display && (
             <>
-              <Heading as="h2" id={about.work.title} variant="display-strong-s" marginBottom="m">
-                {about.work.title}
+              <Heading as="h2" id={about.projects.title} variant="display-strong-s" marginBottom="l">
+                {about.projects.title}
               </Heading>
-              <Column fillWidth gap="l" marginBottom="40">
-                {about.work.experiences.map((experience, index) => (
+              <Column fillWidth gap="xl" marginBottom="80">
+                {about.projects.experiences.map((experience, index) => (
                   <Column key={`${experience.company}-${experience.role}-${index}`} fillWidth>
-                    <Flex fillWidth horizontal="space-between" vertical="end" marginBottom="4">
-                      <Text id={experience.company} variant="heading-strong-l">
-                        {experience.company}
-                      </Text>
-                      <Text variant="heading-default-xs" onBackground="neutral-weak">
+                    <Flex fillWidth horizontal="space-between" vertical="end" marginBottom="8">
+                      <Flex gap="12" vertical="center" style={{ maxWidth: '75%' }}>
+                        {companyLogos[experience.company] && (
+                          <div style={{ width: '40px', height: '40px', position: 'relative', flexShrink: 0 }}>
+                            <Image 
+                              src={companyLogos[experience.company]} 
+                              alt={experience.company}
+                              width={40}
+                              height={40}
+                              style={{ objectFit: 'contain' }}
+                            />
+                          </div>
+                        )}
+                        <Text id={experience.company} variant="heading-strong-m" style={{ 
+                          wordBreak: 'break-word',
+                          fontSize: experience.company === "Software Engineering & Computing Society" ? "1.2rem" : "1.2rem"
+                        }}>
+                          {experience.company}
+                        </Text>
+                      </Flex>
+                      <Text variant="heading-default-xs" onBackground="neutral-weak" style={{ flexShrink: 0, textAlign: 'right' }}>
                         {experience.timeframe}
                       </Text>
                     </Flex>
-                    <Text variant="body-default-s" onBackground="brand-weak" marginBottom="m">
+                    <Text 
+                      variant="body-default-s" 
+                      onBackground="brand-weak" 
+                      marginBottom="s"
+                      style={{ marginLeft: companyLogos[experience.company] ? '52px' : '0' }}
+                    >
                       {experience.role}
                     </Text>
-                    <Column as="ul" gap="16">
+                    <Column 
+                      as="ul" 
+                      gap="16" 
+                      style={{ marginLeft: companyLogos[experience.company] ? '52px' : '0' }}
+                    >
                       {experience.achievements.map((achievement: JSX.Element, index: number) => (
                         <Text
                           as="li"
@@ -273,23 +411,107 @@ export default function About() {
 
           {about.studies.display && (
             <>
-              <Heading as="h2" id={about.studies.title} variant="display-strong-s" marginBottom="m">
+              <Heading as="h2" id={about.studies.title} variant="display-strong-s" marginBottom="l">
                 {about.studies.title}
               </Heading>
-              <Column fillWidth gap="l" marginBottom="40">
+              <Column fillWidth gap="xl" marginBottom="80">
                 {about.studies.institutions.map((institution, index) => (
-                  <Column key={`${institution.name}-${index}`} fillWidth gap="4">
-                    <Text id={institution.name} variant="heading-strong-l">
-                      {institution.name}
-                    </Text>
-                    <Text variant="heading-default-xs" onBackground="neutral-weak">
-                      {institution.description}
-                    </Text>
+                  <Column key={`${institution.name}-${index}`} fillWidth>
+                    <Flex fillWidth horizontal="space-between" vertical="center" marginBottom="12">
+                      <Flex gap="12" vertical="center">
+                        {companyLogos[institution.name] && (
+                          <div style={{ width: '40px', height: '40px', position: 'relative' }}>
+                            <Image 
+                              src={companyLogos[institution.name]} 
+                              alt={institution.name}
+                              width={40}
+                              height={40}
+                              style={{ objectFit: 'contain' }}
+                            />
+                          </div>
+                        )}
+                        <Text id={institution.name} variant="heading-strong-m" style={{ fontSize: "1.2rem" }}>
+                          {institution.name}
+                        </Text>
+                      </Flex>
+                    </Flex>
+                    {/* Redesigned education section with better layout */}
+                    <Column 
+                      style={{ 
+                        marginLeft: companyLogos[institution.name] ? '52px' : '0',
+                        background: 'var(--dynamic-background-brand-alpha-weak)',
+                        borderRadius: 'var(--static-radius-m)',
+                        padding: '20px',
+                        border: '1px solid var(--dynamic-border-brand-medium)'
+                      }}
+                    >
+                      {/* Group Degree & Minor */}
+                      <Flex gap="32" wrap marginBottom="16">
+                        <Column gap="8" flex={1} minWidth={200}>
+                          <Text variant="body-strong-m">Major</Text>
+                          <Text variant="body-default-m">Bachelor of Science, Computer Science Engineering</Text>
+                        </Column>
+                        <Column gap="8" flex={1} minWidth={200}>
+                          <Text variant="body-strong-m">Minor</Text>
+                          <Text variant="body-default-m">Economics</Text>
+                        </Column>
+                      </Flex>
+                      
+                      {/* Group GPA & Graduation */}
+                      <Flex gap="32" wrap marginTop="16">
+                        <Column gap="8" flex={1} minWidth={200}>
+                          <Text variant="body-strong-m">GPA</Text>
+                          <Text variant="body-default-m">3.98</Text>
+                        </Column>
+                        <Column gap="8" flex={1} minWidth={200}>
+                          <Text variant="body-strong-m">Expected Graduation</Text>
+                          <Text variant="body-default-m">Fall 2025</Text>
+                        </Column>
+                      </Flex>
+                      
+                      {/* Add Relevant Coursework - slightly more spacing */}
+                      <Column gap="12" marginTop="24">
+                        <Text variant="body-strong-m">Relevant Coursework</Text>
+                        <Flex wrap gap="8">
+                          {[
+                            "Algorithms & Data Structures",
+                            "Object-Oriented Software Design",
+                            "Database Systems",
+                            "Autonomous Vehicles",
+                            "Big Data Analysis",
+                            "Computer Organization & Architecture",
+                            "Biometrics & Pattern Recognition"
+                          ].map((course, idx) => (
+                            <Tag key={idx} size="m" background="brand-alpha-weak" border="brand-medium">
+                              {course}
+                            </Tag>
+                          ))}
+                        </Flex>
+                      </Column>
+                    </Column>
                   </Column>
                 ))}
               </Column>
             </>
           )}
+
+          {/* Honors & Awards Section */}
+          <Heading as="h2" id="honors-awards" variant="display-strong-s" marginBottom="l">
+            Honors & Awards
+          </Heading>
+          <Column fillWidth gap="xl" marginBottom="80">
+            <Column fillWidth gap="16">
+              <Text variant="heading-strong-l" style={{ fontSize: "1.2rem" }}>Academic Achievements</Text>
+              <Column as="ul" gap="16" style={{ marginTop: '8px' }}>
+                <Text as="li" variant="body-default-m">
+                  4x Dean's List
+                </Text>
+                <Text as="li" variant="body-default-m">
+                  MSU Academic Scholarship
+                </Text>
+              </Column>
+            </Column>
+          </Column>
 
           {about.technical.display && (
             <>
@@ -297,45 +519,108 @@ export default function About() {
                 as="h2"
                 id={about.technical.title}
                 variant="display-strong-s"
-                marginBottom="40"
+                marginBottom="l"
               >
                 {about.technical.title}
               </Heading>
-              <Column fillWidth gap="l">
-                {about.technical.skills.map((skill, index) => (
-                  <Column key={`${skill}-${index}`} fillWidth gap="4">
-                    <Text variant="heading-strong-l">{skill.title}</Text>
-                    <Text variant="body-default-m" onBackground="neutral-weak">
-                      {skill.description}
-                    </Text>
-                    {skill.images && skill.images.length > 0 && (
-                      <Flex fillWidth paddingTop="m" gap="12" wrap>
-                        {skill.images.map((image, index) => (
-                          <Flex
-                            key={index}
-                            border="neutral-medium"
-                            radius="m"
-                            //@ts-ignore
-                            minWidth={image.width}
-                            //@ts-ignore
-                            height={image.height}
-                          >
-                            <SmartImage
-                              enlarge
-                              radius="m"
-                              //@ts-ignore
-                              sizes={image.width.toString()}
-                              //@ts-ignore
-                              alt={image.alt}
-                              //@ts-ignore
-                              src={image.src}
-                            />
-                          </Flex>
-                        ))}
+              <Column fillWidth gap="xl" marginBottom="xl">
+                {/* Static Skills Cards Grid */}
+                <Column fillWidth gap="16">
+                  <Text variant="heading-strong-l" style={{ fontSize: "1.2rem" }}>Languages & Tools</Text>
+                  <Flex wrap gap="16" paddingY="12" style={{ justifyContent: 'flex-start' }}>
+                    {skills.map((skill, index) => (
+                      <Flex 
+                        key={index}
+                        direction="column"
+                        align="center"
+                        background="brand-alpha-weak"
+                        border="brand-medium"
+                        radius="m"
+                        padding="20"
+                        gap="12"
+                        style={{ 
+                          flexBasis: 'calc(50% - 8px)',
+                          minHeight: '100px',
+                          boxSizing: 'border-box',
+                          justifyContent: 'center'
+                        }}
+                      >
+                        <div style={{ 
+                          width: '50px', 
+                          height: '50px', 
+                          position: 'relative', 
+                          marginBottom: '8px',
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center'
+                        }}>
+                        <img
+                          src={skill.image}
+                          alt={skill.name}
+                        style={{
+                          position: 'absolute',
+                          top: '50%',
+                          left: '50%',
+                          transform: 'translate(170%, -50%)',
+                          maxWidth: '100%',
+                          maxHeight: '100%',
+                        }}
+                        />
+                        </div>
+                        <Text variant="body-strong-s" style={{ textAlign: 'center' }}>{skill.name}</Text>
                       </Flex>
-                    )}
-                  </Column>
-                ))}
+                    ))}
+                  </Flex>
+                </Column>
+                
+                {/* Frameworks & Libraries */}
+                <Column fillWidth gap="16">
+                  <Text variant="heading-strong-l" style={{ fontSize: "1.2rem" }}>Frameworks & Libraries</Text>
+                  <Flex wrap gap="16" paddingY="12" style={{ justifyContent: 'flex-start' }}>
+                    {frameworks.map((framework, index) => (
+                      <Flex 
+                        key={index}
+                        direction="column"
+                        align="center"
+                        background="brand-alpha-weak"
+                        border="brand-medium"
+                        radius="m"
+                        padding="20"
+                        gap="12"
+                        style={{ 
+                          flexBasis: 'calc(50% - 8px)',
+                          minHeight: '100px',
+                          boxSizing: 'border-box',
+                          justifyContent: 'center'
+                        }}
+                      >
+                        <div style={{ 
+                          width: '50px', 
+                          height: '50px', 
+                          position: 'relative', 
+                          marginBottom: '8px',
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center'
+                        }}>
+                          <img 
+                            src={framework.image} 
+                            alt={framework.name}
+                          style={{
+                            position: 'absolute',
+                            top: '50%',
+                            left: '50%',
+                            transform: 'translate(170%, -50%)',
+                            maxWidth: '100%',
+                            maxHeight: '100%',
+                          }}
+                          />
+                        </div>
+                        <Text variant="body-strong-s" style={{ textAlign: 'center' }}>{framework.name}</Text>
+                      </Flex>
+                    ))}
+                  </Flex>
+                </Column>
               </Column>
             </>
           )}

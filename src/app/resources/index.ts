@@ -11,10 +11,9 @@ export {
 export {
   person,
   social,
-  newsletter,
   home,
   about,
   blog,
-  work,
+  projects,
   gallery,
 } from "@/app/resources/content";
