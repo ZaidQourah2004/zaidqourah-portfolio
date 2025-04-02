@@ -97,6 +97,7 @@ export const CodeBlock = ({
             <button
               onClick={copyToClipboard}
               className="flex items-center gap-1 text-xs text-zinc-400 hover:text-zinc-200 transition-colors font-sans"
+              aria-label={copied ? "Copied code" : "Copy code to clipboard"}
             >
               {copied ? <IconCheck size={14} /> : <IconCopy size={14} />}
             </button>

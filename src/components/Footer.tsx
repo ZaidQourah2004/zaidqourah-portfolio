@@ -13,7 +13,7 @@ export const Footer = () => {
       padding="8"
       horizontal="center"
       mobileDirection="column"
-      minHeight="80"
+      style={{ marginTop: "auto" }}
     >
       <Flex
         className={styles.mobile}

@@ -1,12 +1,13 @@
-import { baseURL } from "@/app/resources";
-
 export default function robots() {
   return {
     rules: [
       {
         userAgent: "*",
+        allow: '/', // Explicitly allow everything first
+        disallow: '/contact', // Disallow the contact page
       },
     ],
-    sitemap: `${baseURL}/sitemap.xml`,
+    // Hardcoded the final domain for the sitemap
+    sitemap: `https://www.zaidqourah.com/sitemap.xml`, 
   };
 }

@@ -150,7 +150,6 @@ export default async function RootLayout({ children }: RootLayoutProps) {
             paddingY="l"
             paddingX="l"
             horizontal="center"
-            flex={1}
           >
             <Flex horizontal="center" fillWidth minHeight="0">
               <RouteGuard>{children}</RouteGuard>
